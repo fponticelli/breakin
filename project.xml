@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+	<meta title="Breakin" package="me.ponticelli" version="1.0.0" company="Franco Ponticelli" />
+	<app main="Main" path="bin" file="Breakin" />
+	<source path="src" />
+	<haxelib name="lime" />
+	<haxelib name="thx.core" />
+	<haxelib name="edge" />
+	<assets path="assets" rename="assets" exclude="lime.svg" />
+	<icon path="assets/lime.svg" />
+</project>
