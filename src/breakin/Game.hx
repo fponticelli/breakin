@@ -43,23 +43,24 @@ class Game {
         ),
         Body.rect(
           0,
-          0,
           wallsize,
-          container.stage.stageHeight,
+          wallsize,
+          container.stage.stageHeight - wallsize * 2,
           BodyType.STATIC
         ),
         Body.rect(
           container.stage.stageWidth - wallsize,
-          0,
           wallsize,
-          container.stage.stageHeight,
+          wallsize,
+          container.stage.stageHeight - wallsize * 2,
           BodyType.STATIC
-        ),
+        )
       ];
     // new Floor(container.stage.stageWidth, container.stage.stageHeight);
     var ball = Body.ball(10);
 
-    ball.shape.body.velocity.setxy(10, 10);
+    ball.shape.body.position.setxy(wallsize * 2, wallsize * 2);
+    ball.shape.body.velocity.setxy(50, 250);
 
     for(wall in walls)
       space.bodies.add(wall.shape.body);
