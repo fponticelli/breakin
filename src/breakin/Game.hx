@@ -21,12 +21,10 @@ class Game {
     space = new Space(new Vec2(0, 0));
     world = new World(50);
 
-    var wallsize = 20;
-
     var ball = Body.ball(10);
-    var perimeter = Body.perimeter(0, 0, container.stage.stageWidth, container.stage.stageHeight, wallsize);
+    var perimeter = Body.perimeter(0, 0, container.stage.stageWidth, container.stage.stageHeight, Config.wallSize);
 
-    ball.body.position.setxy(wallsize * 4, wallsize * 4);
+    ball.body.position.setxy(Config.wallSize * 4, Config.wallSize * 4);
     ball.body.velocity.setxy(50, 250);
 
     space.bodies.add(perimeter.body);

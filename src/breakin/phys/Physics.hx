@@ -11,7 +11,6 @@ class Physics implements ISystem {
   public function new(space : Space)
     this.space = space;
 
-  public function update() {
+  public function update()
     space.step(timeDelta / 1000);
-  }
 }

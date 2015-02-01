@@ -8,6 +8,8 @@ import nape.util.ShapeDebug;
 class DebugPhysicsRender implements ISystem {
   var debug : ShapeDebug;
   var space : Space;
+  //var entities : View<{ body : Body }>;
+
   public function new(container : Sprite, space : Space) {
     debug = new ShapeDebug(container.stage.stageWidth, container.stage.stageHeight);
     container.addChild(debug.display);
