@@ -17,9 +17,6 @@ class Game {
   var container : Sprite;
   public function new(container : Sprite) {
     this.container = container;
-    //container.graphics.beginFill(0x00FF00);
-    //container.graphics.drawRect(0, 0, 100, 100);
-    //container.graphics.endFill();
 
     space = new Space(new Vec2(0, 0));
     world = new World(50);
@@ -56,16 +53,16 @@ class Game {
           BodyType.STATIC
         )
       ];
-    // new Floor(container.stage.stageWidth, container.stage.stageHeight);
+
     var ball = Body.ball(10);
 
-    ball.shape.body.position.setxy(wallsize * 2, wallsize * 2);
-    ball.shape.body.velocity.setxy(50, 250);
+    ball.body.position.setxy(wallsize * 2, wallsize * 2);
+    ball.body.velocity.setxy(50, 250);
 
     for(wall in walls)
-      space.bodies.add(wall.shape.body);
+      space.bodies.add(wall.body);
 
-    space.bodies.add(ball.shape.body);
+    space.bodies.add(ball.body);
 
     world.physics.add(new Physics(space));
 

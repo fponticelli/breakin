@@ -3,20 +3,24 @@ package breakin.components;
 import nape.shape.*;
 import nape.phys.*;
 using thx.core.Nulls;
+using thx.core.Arrays;
 
 class Body {
-  public var shape : Shape;
+  public var shapes : Array<Shape>;
+  public var body : nape.phys.Body;
 
-  public function new(shape : Shape, ?type : BodyType, ?material : Material) {
-    this.shape = shape;
-    trace(type);
-    shape.body = new nape.phys.Body(type.or(BodyType.DYNAMIC));
-    shape.material = material.or(new Material(1.5));
+  public function new(shapes : Array<Shape>, ?type : BodyType, ?material : Material) {
+    this.shapes = shapes;
+    this.body = new nape.phys.Body(type.or(BodyType.DYNAMIC));
+    shapes.map(function(shape) {
+      body.shapes.add(shape);
+      shape.material = material.or(new Material(1.5));
+    });
   }
 
   public static function ball(radius : Float, ?type : BodyType, ?material : Material)
-    return new Body(new Circle(radius), type, material);
+    return new Body([new Circle(radius)], type, material);
 
   public static function rect(x : Float, y : Float, width : Float, height : Float, ?type : BodyType, ?material : Material)
-    return new Body(new Polygon(Polygon.rect(x, y, width, height)), type, material);
+    return new Body([new Polygon(Polygon.rect(x, y, width, height))], type, material);
 }
