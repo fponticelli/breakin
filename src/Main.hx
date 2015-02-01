@@ -1,7 +1,10 @@
-import lime.app.Application;
+import breakin.Game;
+import openfl.display.Sprite;
 
-class Main extends Application {
-	public function new() {
-		super();
-	}
+class Main extends Sprite {
+  public function new() {
+    super();
+    var game = new Game(this);
+    game.start();
+  }
 }
