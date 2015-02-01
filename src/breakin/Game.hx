@@ -21,47 +21,15 @@ class Game {
     space = new Space(new Vec2(0, 0));
     world = new World(50);
 
-    var wallsize = 10;
-
-    var walls = [
-        Body.rect(
-          0,
-          container.stage.stageHeight - wallsize,
-          container.stage.stageWidth,
-          wallsize,
-          BodyType.STATIC
-        ),
-        Body.rect(
-          0,
-          0,
-          container.stage.stageWidth,
-          wallsize,
-          BodyType.STATIC
-        ),
-        Body.rect(
-          0,
-          wallsize,
-          wallsize,
-          container.stage.stageHeight - wallsize * 2,
-          BodyType.STATIC
-        ),
-        Body.rect(
-          container.stage.stageWidth - wallsize,
-          wallsize,
-          wallsize,
-          container.stage.stageHeight - wallsize * 2,
-          BodyType.STATIC
-        )
-      ];
+    var wallsize = 20;
 
     var ball = Body.ball(10);
+    var perimeter = Body.perimeter(0, 0, container.stage.stageWidth, container.stage.stageHeight, wallsize);
 
-    ball.body.position.setxy(wallsize * 2, wallsize * 2);
+    ball.body.position.setxy(wallsize * 4, wallsize * 4);
     ball.body.velocity.setxy(50, 250);
 
-    for(wall in walls)
-      space.bodies.add(wall.body);
-
+    space.bodies.add(perimeter.body);
     space.bodies.add(ball.body);
 
     world.physics.add(new Physics(space));

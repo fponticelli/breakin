@@ -23,4 +23,13 @@ class Body {
 
   public static function rect(x : Float, y : Float, width : Float, height : Float, ?type : BodyType, ?material : Material)
     return new Body([new Polygon(Polygon.rect(x, y, width, height))], type, material);
+
+  public static function perimeter(x : Float, y : Float, width : Float, height : Float, size : Float, ?material : Material) {
+    return new Body([
+      new Polygon(Polygon.rect(x, y, width, size)),
+      new Polygon(Polygon.rect(x + width - size, y + size, width, height - size * 2)),
+      new Polygon(Polygon.rect(x, y + height - size, width, size)),
+      new Polygon(Polygon.rect(x, size, size, height - size * 2))
+    ], material);
+  }
 }
