@@ -1,13 +1,11 @@
 package breakin.render;
 
 import breakin.components.Structure;
-import breakin.components.Display;
 import edge.Entity;
 import edge.ISystem;
 import pixi.display.Stage;
 import pixi.primitives.Graphics;
 import nape.shape.Shape;
-import nape.phys.*;
 using thx.core.Arrays;
 import thx.color.HSL;
 

@@ -1,8 +1,8 @@
 package breakin.components;
 
 import edge.IComponent;
-import pixi.textures.Texture;
 import pixi.display.Sprite;
+import pixi.textures.Texture;
 
 class Display implements IComponent {
   var sprite : Sprite;

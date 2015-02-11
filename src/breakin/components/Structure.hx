@@ -3,7 +3,6 @@ package breakin.components;
 import nape.shape.*;
 import nape.phys.*;
 using thx.core.Nulls;
-using thx.core.Arrays;
 
 class Structure {
   public var shapes : Array<Shape>;
