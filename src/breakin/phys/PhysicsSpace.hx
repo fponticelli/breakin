@@ -13,7 +13,7 @@ class PhysicsSpace implements ISystem {
   var bodies : View<{ structure : Structure }>;
 
   public function new() {
-    this.space = new Space(Vec2.weak(0, 200));
+    this.space = new Space(Vec2.weak(0, 600));
   }
 
   public function bodiesAdded(entity : Entity, data : { structure : Structure }) {

@@ -8,7 +8,7 @@ using thx.core.Arrays;
 class Structure {
   public var shapes : Array<Shape>;
   public var body : Body;
-
+  static var defaultMaterial = new Material(1,0.03,0.1,0.9,0.0001);
 
   public function new(shapes : Array<Shape>, ?type : BodyType, ?material : Material) {
     this.shapes = shapes;
@@ -16,7 +16,7 @@ class Structure {
     shapes.map(function(shape) {
       //body.shapes.add(shape);
       shape.body = body;
-      shape.material = material.or(new Material(0.5));
+      shape.material = material.or(defaultMaterial);
     });
   }
 

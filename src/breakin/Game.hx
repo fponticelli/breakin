@@ -21,7 +21,7 @@ class Game {
     engine = world.engine;
 
     var ball = Structure.ball(Config.width / 2, Config.height / 4, 38);
-    ball.body.velocity.setxy(200, 0);
+    ball.body.velocity.setxy(200, 20);
 
     engine.create([ball, new Display("sprites/ball.png", 48, 48)]);
     engine.create([
