@@ -20,9 +20,8 @@ class PhysicsSpace implements ISystem {
     space.bodies.add(data.structure.body);
   }
 
-  public function bodiesRemoved(entity : Entity, data : { structure : Structure }) {
-    space.bodies.add(data.structure.body);
-  }
+  public function bodiesRemoved(entity : Entity, data : { structure : Structure })
+    space.bodies.remove(data.structure.body);
 
   public function update() {
     space.step(timeDelta / 1000);
