@@ -30,7 +30,7 @@ class Game {
 
     world.physics.add(new PhysicsSpace());
     world.render.add(new PixiRenderer(stage, renderer));
-    world.render.add(new PixiDebugRenderer(stage, renderer));
+    //world.render.add(new PixiDebugRenderer(stage, renderer));
   }
 
   public function start()

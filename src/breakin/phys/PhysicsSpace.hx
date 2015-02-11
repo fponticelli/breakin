@@ -11,22 +11,17 @@ class PhysicsSpace implements ISystem {
   var space : Space;
 
   var bodies : View<{ structure : Structure }>;
-  var map : Map<Entity, Body>;
 
   public function new() {
     this.space = new Space(Vec2.weak(0, 200));
-    map = new Map();
   }
 
   public function bodiesAdded(entity : Entity, data : { structure : Structure }) {
-    map.set(entity, data.structure.body);
     space.bodies.add(data.structure.body);
   }
 
-  public function bodiesRemoved(entity : Entity) {
-    var body = map.get(entity);
-    map.remove(entity);
-    space.bodies.add(body);
+  public function bodiesRemoved(entity : Entity, data : { structure : Structure }) {
+    space.bodies.add(data.structure.body);
   }
 
   public function update() {
