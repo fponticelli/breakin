@@ -1,0 +1,11 @@
+-lib edge
+-lib thx.core
+-lib thx.color
+-lib nape
+-lib pixijs
+-cp src
+-js bin/main.js
+-main Main
+
+-cmd mkdir -p bin/sprites
+-cmd cp assets/sprites/*.* bin/sprites/
