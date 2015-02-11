@@ -1,6 +1,6 @@
 package breakin.render;
 
-import breakin.components.Body;
+import breakin.components.Structure;
 import breakin.components.Display;
 import edge.Entity;
 import edge.ISystem;
@@ -18,7 +18,7 @@ class PixiRenderer implements ISystem {
     this.map = new Map();
   }
 
-  public function updateAdded(entity : Entity, data : { body : Body, display : Display }) {
+  public function updateAdded(entity : Entity, data : { structure : Structure, display : Display }) {
     map.set(entity, data.display.sprite);
     stage.addChild(data.display.sprite);
   }
@@ -32,11 +32,11 @@ class PixiRenderer implements ISystem {
   public function before()
     renderer.render(stage);
 
-  public function update(body : Body, display : Display) {
-    var pos = body.body.position;
+  public function update(structure : Structure, display : Display) {
+    var pos = structure.body.position;
     display.sprite.pivot.x = display.x;
     display.sprite.pivot.y = display.y;
-    display.sprite.rotation = body.body.rotation;
+    display.sprite.rotation = structure.body.rotation;
     display.sprite.x = pos.x;
     display.sprite.y = pos.y;
   }

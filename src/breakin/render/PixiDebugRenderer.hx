@@ -1,6 +1,6 @@
 package breakin.render;
 
-import breakin.components.Body;
+import breakin.components.Structure;
 import breakin.components.Display;
 import edge.Entity;
 import edge.ISystem;
@@ -8,6 +8,7 @@ import pixi.display.Stage;
 import pixi.primitives.Graphics;
 import pixi.renderers.IRenderer;
 import nape.shape.Shape;
+import nape.phys.*;
 using thx.core.Arrays;
 import thx.color.HSL;
 
@@ -29,11 +30,11 @@ class PixiDebugRenderer implements ISystem {
     g.lineStyle(1, color, 0.75);
   }
 
-  public function update(body : Body) {
-    body.shapes.pluck(render(_, body.body));
+  public function update(structure : Structure) {
+    structure.shapes.pluck(render(_, structure.body));
   }
 
-  function render(shape : Shape, body : nape.phys.Body) {
+  function render(shape : Shape, body : Body) {
     if(shape.isCircle()) {
       var c = shape.castCircle,
           x = c.localCOM.x + body.position.x,
