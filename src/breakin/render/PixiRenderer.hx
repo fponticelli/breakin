@@ -16,23 +16,7 @@ class PixiRenderer implements ISystem {
     this.renderer = renderer;
   }
 
-  public function updateAdded(entity : Entity, data : { structure : Structure, display : Display }) {
-    stage.addChild(data.display.sprite);
-  }
-
-  public function updateRemoved(entity : Entity, data : { structure : Structure, display : Display }) {
-    stage.removeChild(data.display.sprite);
-  }
-
-  public function before()
-    renderer.render(stage);
-
   public function update(structure : Structure, display : Display) {
-    var pos = structure.body.position;
-    display.sprite.pivot.x = display.x;
-    display.sprite.pivot.y = display.y;
-    display.sprite.rotation = structure.body.rotation;
-    display.sprite.x = pos.x;
-    display.sprite.y = pos.y;
+    renderer.render(stage);
   }
 }
