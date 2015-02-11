@@ -1,38 +1,36 @@
 package breakin;
 
-import nape.space.Space;
 import edge.World;
-import openfl.display.Sprite;
-
-import nape.phys.*;
-import nape.geom.Vec2;
+import edge.Engine;
 
 import breakin.components.*;
 import breakin.phys.*;
 import breakin.render.*;
 
+import pixi.display.Stage;
+import pixi.renderers.IRenderer;
+
 class Game {
-  var space : Space;
   var world : World;
-  var container : Sprite;
-  public function new(container : Sprite) {
-    this.container = container;
+  var engine : Engine;
+  var stage : Stage;
+  public function new(stage : Stage, renderer : IRenderer) {
+    this.stage = stage;
 
-    space = new Space(new Vec2(0, 0));
     world = new World(50);
+    engine = world.engine;
 
-    var ball = Body.ball(10);
-    var perimeter = Body.perimeter(0, 0, container.stage.stageWidth, container.stage.stageHeight, Config.wallSize);
+    var ball = Body.ball(Config.width / 2, Config.height / 4, 38);
+    ball.body.velocity.setxy(200, 0);
 
-    ball.body.position.setxy(Config.wallSize * 4, Config.wallSize * 4);
-    ball.body.velocity.setxy(50, 250);
+    engine.create([ball, new Display("sprites/ball.png", 48, 48)]);
+    engine.create([
+        Body.perimeter(0, 0, Config.width, Config.height, Config.wallSize)
+      ]);
 
-    space.bodies.add(perimeter.body);
-    space.bodies.add(ball.body);
-
-    world.physics.add(new Physics(space));
-
-    world.render.add(new DebugPhysicsRender(container, space));
+    world.physics.add(new PhysicsSpace());
+    world.render.add(new PixiRenderer(stage, renderer));
+    world.render.add(new PixiDebugRenderer(stage, renderer));
   }
 
   public function start()
