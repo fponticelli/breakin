@@ -11,6 +11,9 @@ class Config {
     width : 100.0,
     height : 20.0,
     fromBottom : 20.0,
+    delta : 50,
+    accelleration : 50,
+    decelleration : 10,
     material : new Material(0.8, 1.0, 1.4, 1.5, 0.01)
   };
   public static var ball = {

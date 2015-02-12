@@ -63,7 +63,10 @@ class Game {
     world.physics.add(new UpdatePaddlePosition(
         Config.paddle.width / 2 + Config.wall.size,
         Config.width - Config.paddle.width / 2 - Config.wall.size,
-        Config.height - Config.paddle.fromBottom
+        Config.height - Config.paddle.fromBottom,
+        Config.paddle.delta,
+        Config.paddle.accelleration,
+        Config.paddle.decelleration
       ));
 
     // rendering

@@ -9,15 +9,14 @@ class UpdatePaddlePosition implements ISystem {
   var delta : Float;
   var accelleration : Float;
   var decelleration : Float;
-  var cur : Float;
   var base : Float;
   var status : Int;
-  public function new(minx : Float, maxx : Float, base : Float) {
+  public function new(minx : Float, maxx : Float, base : Float, delta : Float, accelleration : Float, decelleration : Float) {
     this.minx = minx;
     this.maxx = maxx;
-    delta = 50;
-    accelleration = 50;
-    decelleration = 10;
+    this.delta = delta;
+    this.accelleration = accelleration;
+    this.decelleration = decelleration;
     this.base = base;
     status = 0;
   }
