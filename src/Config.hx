@@ -12,6 +12,7 @@ class Config {
     height : 20.0,
     fromBottom : 20.0,
     delta : 50,
+    maxVelocity: 1200, // px/sec
     accelleration : 50,
     decelleration : 10,
     material : new Material(0.8, 1.0, 1.4, 1.5, 0.01)
