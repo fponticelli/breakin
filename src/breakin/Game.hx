@@ -18,7 +18,7 @@ class Game {
   public function new(stage : Stage, renderer : IRenderer) {
     this.stage = stage;
 
-    world = new World(50);
+    world = new World(30);
     engine = world.engine;
 
     var ball = Structure.ball(Config.width / 2, Config.height / 4, 38);
