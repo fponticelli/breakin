@@ -3,7 +3,7 @@ package breakin.phys;
 import edge.*;
 import breakin.components.*;
 
-class UpdatePaddlePosition implements ISystem {
+class UpdatePaddleX implements ISystem {
   var delta : Float;
   var accelleration : Float;
   var decelleration : Float;

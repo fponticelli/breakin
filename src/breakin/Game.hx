@@ -59,7 +59,7 @@ class Game {
     world.physics.add(new KeyboardSystem());
 
     // physics
-    world.physics.add(new UpdatePaddlePosition(
+    world.physics.add(new UpdatePaddleX(
         Config.height - Config.paddle.fromBottom,
         Config.paddle.delta,
         Config.paddle.accelleration,
