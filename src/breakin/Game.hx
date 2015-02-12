@@ -8,6 +8,8 @@ import breakin.interaction.*;
 import breakin.phys.*;
 import breakin.render.*;
 
+import nape.phys.BodyType;
+
 import pixi.display.Stage;
 import pixi.renderers.IRenderer;
 
@@ -21,19 +23,48 @@ class Game {
     world = new World(30);
     engine = world.engine;
 
-    var ball = Structure.ball(Config.width / 2, Config.height / 4, 38);
-    ball.body.velocity.setxy(200, 20);
+    var ball = Structure.ball(
+      Config.width / 2,
+      Config.height - Config.paddle.fromBottom - Config.paddle.height - Config.ball.radius,
+      Config.ball.radius,
+      Config.ball.material);
 
     engine.create([ball, new Display("sprites/ball.png", 48, 48)]);
     engine.create([
-        Structure.perimeter(0, 0, Config.width, Config.height, Config.wallSize)
+        Structure.perimeter(
+          0,
+          0,
+          Config.width,
+          Config.height,
+          Config.wall.size,
+          Config.wall.material)
       ]);
+
+    var paddle = Structure.rect(
+          -Config.paddle.width / 2,
+          -Config.paddle.height,
+           Config.paddle.width,
+           Config.paddle.height,
+           Config.paddle.material,
+           BodyType.KINEMATIC
+        );
+    paddle.body.position.setxy(
+      Config.width / 2,
+      Config.height - Config.paddle.fromBottom
+    );
+
+    engine.create([paddle, new PaddleDirection(0, false)]);
 
     // interaction
     world.physics.add(new KeyboardSystem());
 
     // physics
     world.physics.add(new PhysicsSpace());
+    world.physics.add(new UpdatePaddlePosition(
+        Config.paddle.width / 2,
+        Config.width - Config.paddle.width / 2,
+        Config.height - Config.paddle.fromBottom
+      ));
 
     // rendering
     //world.render.add(new PixiStageUpdate(stage));
