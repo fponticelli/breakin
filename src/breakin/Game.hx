@@ -61,8 +61,8 @@ class Game {
     // physics
     world.physics.add(new PhysicsSpace());
     world.physics.add(new UpdatePaddlePosition(
-        Config.paddle.width / 2,
-        Config.width - Config.paddle.width / 2,
+        Config.paddle.width / 2 + Config.wall.size,
+        Config.width - Config.paddle.width / 2 - Config.wall.size,
         Config.height - Config.paddle.fromBottom
       ));
 
