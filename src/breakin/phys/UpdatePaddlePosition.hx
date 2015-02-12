@@ -4,16 +4,12 @@ import edge.*;
 import breakin.components.*;
 
 class UpdatePaddlePosition implements ISystem {
-  var minx : Float;
-  var maxx : Float;
   var delta : Float;
   var accelleration : Float;
   var decelleration : Float;
   var base : Float;
   var status : Int;
-  public function new(minx : Float, maxx : Float, base : Float, delta : Float, accelleration : Float, decelleration : Float) {
-    this.minx = minx;
-    this.maxx = maxx;
+  public function new(base : Float, delta : Float, accelleration : Float, decelleration : Float) {
     this.delta = delta;
     this.accelleration = accelleration;
     this.decelleration = decelleration;
@@ -21,24 +17,15 @@ class UpdatePaddlePosition implements ISystem {
     status = 0;
   }
 
+  var timeDelta : Float;
   public function update(paddle : Structure, direction : PaddleDirection) {
-    //direction.x = 0;
-    paddle.body.velocity.x += direction.x * 4;
-    if(paddle.body.position.x <= minx && paddle.body.velocity.x < 0) {
-      paddle.body.position.x = minx;
-      paddle.body.velocity.x = 0;
-      direction.x = 0;
-    } else if(paddle.body.position.x >= maxx && paddle.body.velocity.x > 0) {
-      paddle.body.position.x = maxx;
-      paddle.body.velocity.x = 0;
-      direction.x = 0;
-    } else if(Math.abs(direction.x) < 0.1) {
-      direction.x = 0;
-      paddle.body.velocity.x *= 0.9;
+    if(direction.x == 0) {
+      paddle.body.velocity.x *= 0.92;
     } else {
-      direction.x *= 0.8;
-      //paddle.body.velocity.x *= 0.15;
+      paddle.body.velocity.x += timeDelta / 1000 * direction.x * 1200;
     }
+    direction.x = 0;
+
     if(status == 0 && direction.spring) {
       status = 1;
     }
