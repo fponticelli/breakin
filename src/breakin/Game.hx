@@ -4,6 +4,7 @@ import edge.World;
 import edge.Engine;
 
 import breakin.components.*;
+import breakin.interaction.*;
 import breakin.phys.*;
 import breakin.render.*;
 
@@ -28,7 +29,13 @@ class Game {
         Structure.perimeter(0, 0, Config.width, Config.height, Config.wallSize)
       ]);
 
+    // interaction
+    world.physics.add(new KeyboardSystem());
+
+    // physics
     world.physics.add(new PhysicsSpace());
+
+    // rendering
     //world.render.add(new PixiStageUpdate(stage));
     world.render.add(new PixiDebugRenderer(stage));
     world.render.add(new PixiRenderer(stage, renderer));
