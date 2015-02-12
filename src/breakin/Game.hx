@@ -62,6 +62,7 @@ class Game {
     world.physics.add(new UpdatePaddleX(
         Config.paddle.maxVelocity
       ));
+    world.physics.add(new UpdatePaddleY(
         Config.height - Config.paddle.fromBottom,
         Config.paddle.delta,
         Config.paddle.accelleration,
