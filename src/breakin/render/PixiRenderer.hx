@@ -4,13 +4,13 @@ import breakin.components.Structure;
 import breakin.components.Display;
 import edge.Entity;
 import edge.ISystem;
-import pixi.display.Stage;
-import pixi.renderers.IRenderer;
+import pixi.core.display.Container;
+import pixi.core.renderers.SystemRenderer;
 
 class PixiRenderer implements ISystem {
-  var stage : Stage;
-  var renderer : IRenderer;
-  public function new(stage : Stage, renderer : IRenderer) {
+  var stage : Container;
+  var renderer : SystemRenderer;
+  public function new(stage : Container, renderer : SystemRenderer) {
     this.stage = stage;
     this.renderer = renderer;
   }

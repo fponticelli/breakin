@@ -3,16 +3,16 @@ package breakin.render;
 import breakin.components.Structure;
 import edge.Entity;
 import edge.ISystem;
-import pixi.display.Stage;
-import pixi.primitives.Graphics;
+import pixi.core.display.Container;
+import pixi.core.graphics.Graphics;
 import nape.shape.Shape;
 using thx.core.Arrays;
 import thx.color.HSL;
 
 class PixiDebugRenderer implements ISystem {
-  var stage : Stage;
+  var stage : Container;
   var map : Map<Entity, Graphics>;
-  public function new(stage : Stage) {
+  public function new(stage : Container) {
     this.stage = stage;
     map = new Map();
   }

@@ -10,14 +10,14 @@ import breakin.render.*;
 
 import nape.phys.BodyType;
 
-import pixi.display.Stage;
-import pixi.renderers.IRenderer;
+import pixi.core.display.Container;
+import pixi.core.renderers.SystemRenderer;
 
 class Game {
   var world : World;
   var engine : Engine;
-  var stage : Stage;
-  public function new(stage : Stage, renderer : IRenderer) {
+  var stage : Container;
+  public function new(stage : Container, renderer : SystemRenderer) {
     this.stage = stage;
 
     world = new World(30);

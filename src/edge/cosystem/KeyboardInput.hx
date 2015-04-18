@@ -7,7 +7,6 @@ import thx.core.Set;
 class KeyboardInput {
   var keys : Set<Key>;
 
-  var altGraphKey : Bool;
   var altKey : Bool;
   var ctrlKey : Bool;
   var metaKey : Bool;
@@ -30,7 +29,6 @@ class KeyboardInput {
   }
 
   function setModifiers(e : KeyboardEvent) {
-    altGraphKey = e.altGraphKey;
     altKey = e.altKey;
     ctrlKey = e.ctrlKey;
     metaKey = e.metaKey;
