@@ -2,7 +2,7 @@ package edge.cosystem;
 
 import js.Browser;
 import js.html.KeyboardEvent;
-import thx.core.Set;
+import thx.Set;
 
 class KeyboardInput {
   var keys : Set<Key>;

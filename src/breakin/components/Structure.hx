@@ -2,7 +2,7 @@ package breakin.components;
 
 import nape.shape.*;
 import nape.phys.*;
-using thx.core.Nulls;
+using thx.Nulls;
 
 class Structure {
   public var shapes : Array<Shape>;
