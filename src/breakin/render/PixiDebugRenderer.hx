@@ -7,7 +7,7 @@ import pixi.core.display.Container;
 import pixi.core.graphics.Graphics;
 import nape.shape.Shape;
 using thx.Arrays;
-import thx.color.HSL;
+import thx.color.Hsl;
 
 class PixiDebugRenderer implements ISystem {
   var stage : Container;
@@ -21,7 +21,7 @@ class PixiDebugRenderer implements ISystem {
     var g = new Graphics();
     map.set(entity, g);
     stage.addChild(g);
-    var color = HSL.create(Math.random() * 360, 0.6, 0.5).toRGB();
+    var color = Hsl.create(Math.random() * 360, 0.6, 0.5).toRgb();
     g.lineStyle(1, color, 0.75);
     data.structure.shapes.pluck(render(g, _));
   }
